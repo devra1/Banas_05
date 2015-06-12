@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Banas_05</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="get_the_name_text_view">Go Get the Name</string>
+    <string name="users_name_sent_back">Tne name was</string>
+    <string name="get_name_text_view">Enter your name</string>
+    <string name="calling_activity_message">The calling activity was</string>
+    <string name="enter_name_button_text">Enter</string>
+</resources>
