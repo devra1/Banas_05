@@ -1,18 +1,26 @@
 package com.example.ray.banas_05;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
-public class SecondActivity extends ActionBarActivity {
+public class SecondActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        Intent activityThatCalled = getIntent();
+        String previousActivity = activityThatCalled.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        TextView callingTextView = (TextView) findViewById(R.id.calling_activity_info_text_view);
+        callingTextView.append(" " + previousActivity);
     }
 
     @Override
@@ -38,5 +46,12 @@ public class SecondActivity extends ActionBarActivity {
     }
 
     public void onSendUsersName(View view) {
+        EditText usersEditText = (EditText) findViewById(R.id.user_name_edit_text);
+        String usersName = usersEditText.getText().toString();
+
+        Intent getMainIntent = new Intent(this, MainActivity.class);
+        getMainIntent.putExtra(MainActivity.USERS_NAME, usersName);
+        setResult(RESULT_OK, getMainIntent);
+        finish();
     }
 }

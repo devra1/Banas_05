@@ -1,10 +1,12 @@
 package com.example.ray.banas_05;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 //
 //  How to Make Android Apps 5  (Derek Banas)
@@ -14,6 +16,9 @@ import android.view.View;
 //
 
 public class MainActivity extends Activity {
+
+    public final static String EXTRA_MESSAGE = "MESSAGE";
+    public final static String USERS_NAME = "USER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +49,21 @@ public class MainActivity extends Activity {
     }
 
     public void onGetNameClick(View view) {
+        Intent getSecondScreen = new Intent(this, SecondActivity.class);
+
+        final int result = 1;
+
+        getSecondScreen.putExtra(EXTRA_MESSAGE, "MainActivity");
+        startActivityForResult(getSecondScreen, result);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        TextView userTextView = (TextView) findViewById(R.id.users_name_message);
+        String nameSentBack = data.getStringExtra(USERS_NAME);
+        userTextView.append(" " + nameSentBack);
     }
 }
