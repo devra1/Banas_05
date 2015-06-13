@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    public final static String ACTIVITY_NAME = "ActivityName";
+//    public final static String ACTIVITY_NAME = "ActivityName";
     public final static String USERS_NAME = "UserName";
 
 
@@ -50,10 +50,16 @@ public class MainActivity extends Activity {
     }
 
     public void onGetNameClick(View view) {
-        Intent secondScreenIntent = new Intent(this, SecondActivity.class);
-        secondScreenIntent.putExtra(ACTIVITY_NAME, "MainActivity");
+//        Intent secondScreenIntent = new Intent(this, SecondActivity.class);
+//        secondScreenIntent.putExtra(ACTIVITY_NAME, "MainActivity");
+
+        Human bob = new Human("Bob", 6.25, 185);
+
+        Intent sendHuman = new Intent(this, SecondActivity.class);
+        sendHuman.putExtra("human_name", bob);
+
         final int result = 1;
-        startActivityForResult(secondScreenIntent,result);
+        startActivityForResult(sendHuman, result);
     }
 
     @Override

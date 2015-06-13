@@ -17,9 +17,14 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Intent firstActivityIntent = getIntent();
-        String activityName = firstActivityIntent.getStringExtra(MainActivity.ACTIVITY_NAME);
         TextView callingName = (TextView)findViewById(R.id.calling_activity_info_text_view);
-        callingName.append(" " + activityName);
+
+//        String activityName = firstActivityIntent.getStringExtra(MainActivity.ACTIVITY_NAME);
+//        callingName.append(" " + activityName);
+
+        Human person = (Human) firstActivityIntent.getSerializableExtra("human_name");
+        callingName.append(" " + person.getName() + " " + person.getHeight() +
+        " ft.  " + person.getWeight() + " lb.");
     }
 
     @Override
