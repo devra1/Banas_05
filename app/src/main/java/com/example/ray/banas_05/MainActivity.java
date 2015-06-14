@@ -9,17 +9,15 @@ import android.view.View;
 import android.widget.TextView;
 
 //
-//  How to Make Android Apps 5  (Derek Banas)
+//  How to Make Android Apps 6  (Derek Banas)
 //
-//  - Multple Activities
-//  - Passing Data Between Activities
+//  - App 5 modified to pass an Object instead of a String
 //
 
 public class MainActivity extends Activity {
 
 //    public final static String ACTIVITY_NAME = "ActivityName";
     public final static String USERS_NAME = "UserName";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,30 +27,24 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     public void onGetNameClick(View view) {
 //        Intent secondScreenIntent = new Intent(this, SecondActivity.class);
 //        secondScreenIntent.putExtra(ACTIVITY_NAME, "MainActivity");
-
         Human bob = new Human("Bob", 6.25, 185);
 
         Intent sendHuman = new Intent(this, SecondActivity.class);
